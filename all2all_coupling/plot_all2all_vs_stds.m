@@ -33,8 +33,8 @@ end
 
 figure;
 for std_w_idx = 1:length(std_w_array)
-    plot(d_array', ave_S_2d_max_step(:, std_w_idx), 'color', [orange, alphas(std_w_idx)], ...
-        'LineWidth', 1.5, 'DisplayName', sprintf('$\\Delta_{i} = %d \\, \\times\\mathcal{N}(0,1)$ GHz', int64(std_w_array(std_w_idx)))); 
+    plot(d_array(1:50)', ave_S_2d_max_step(1:50, std_w_idx), 'color', [orange, alphas(std_w_idx)], ...
+        'LineWidth', 1.5, 'DisplayName', sprintf('$\\sigma_{\\Delta} = %d $ rad/ns', int64(std_w_array(std_w_idx)))); 
     hold on;
 end
 
@@ -42,7 +42,7 @@ end
 legend('FontSize', 16, 'Location', 'best', 'Interpreter', 'latex');
 
 ylim([0,1])
-xlim([0,5])
+xlim([0,2.5])
 xlabel('$\kappa (ns^{-1})$','Interpreter','latex')
 ylabel('$\langle S \rangle$','Interpreter','latex')
 ax1 = gca; % Get the current axes (main plot)

@@ -1,4 +1,4 @@
-function rescale_all2all_coupling_scan(method, M, num_rng_w, std_w, d_step_size, max_d) 
+function rescale_all2all_coupling_scan1(method, M, num_rng_w, std_w, d_step_size, max_d, gamma_n) 
 
 % clear;clc;close all;
 maxNumCompThreads(1);
@@ -38,7 +38,7 @@ params.g = 1.5e-5; % gain coefficient, ns^-1 with efficiency \eta_i = 90%
 params.g_E = params.g*N_bar;
 params.g_N = params.g*I_bar;
 params.gamma = 500;%500; % cavity loss, ns^-1
-params.gamma_n = 0.5;%0.5; % carrier loss, ns^-1
+params.gamma_n = gamma_n;%0.5;%0.5; % carrier loss, ns^-1
 params.gamma_n_noise = params.gamma_n/N_bar;
 params.j0 = 1/N_bar * 4 * params.gamma_n * (params.N0 * N_bar + params.gamma / params.g); % pump current, ns^-1
 params.Rsp = 5/I_bar; % GHz  spontaneous emission noise radius
@@ -81,7 +81,7 @@ toc
 
 clear t_sol E_sol t_cell E_cell
 mkdir('data_homo')
-save(['./data_homo/diode_data_M_',num2str(M),'_num_rng_w_', num2str(num_rng_w),...
+save(['./data_homo/gamman_',num2str(gamma_n),'_diode_data_M_',num2str(M),'_num_rng_w_', num2str(num_rng_w),...
     '_std_w_',num2str(std_w),'.mat'],'-v7.3')
 
 end

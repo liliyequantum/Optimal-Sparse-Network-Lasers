@@ -22,10 +22,22 @@ d_array = [0:0.05:3, 3.2:0.2:5];
 
 figure;
 for M_idx = 1:length(M_array)
-    plot(d_array,mean_S(:, M_idx),'-o', 'color',color_map(M_idx,:),'MarkerSize', 4, 'LineWidth', 1.5,...
-        'DisplayName',['M = ',num2str(M_array(M_idx))]); hold on;
-    fill([d_array, fliplr(d_array)], [upper_S(:,M_idx)', fliplr(lower_S(:,M_idx)')],color_map(M_idx,:),...
-        'FaceAlpha', 0.4, 'EdgeColor', 'none', 'HandleVisibility', 'off'); hold on;
+    if M_idx == 3
+       plot(d_array(1:24),mean_S(1:24, M_idx),'-o', 'color',color_map(M_idx,:),'MarkerSize', 4, 'LineWidth', 1.5,...
+            'DisplayName',['M = ',num2str(M_array(M_idx))]); hold on;
+        fill([d_array(1:24), fliplr(d_array(1:24))], [upper_S(1:24,M_idx)', fliplr(lower_S(1:24,M_idx)')],color_map(M_idx,:),...
+            'FaceAlpha', 0.4, 'EdgeColor', 'none', 'HandleVisibility', 'off'); hold on;
+    elseif M_idx == 2
+        plot(d_array(1:61),mean_S(1:61, M_idx),'-o', 'color',color_map(M_idx,:),'MarkerSize', 4, 'LineWidth', 1.5,...
+            'DisplayName',['M = ',num2str(M_array(M_idx))]); hold on;
+        fill([d_array(1:61), fliplr(d_array(1:61))], [upper_S(1:61,M_idx)', fliplr(lower_S(1:61,M_idx)')],color_map(M_idx,:),...
+            'FaceAlpha', 0.4, 'EdgeColor', 'none', 'HandleVisibility', 'off'); hold on;
+    else
+        plot(d_array,mean_S(:, M_idx),'-o', 'color',color_map(M_idx,:),'MarkerSize', 4, 'LineWidth', 1.5,...
+            'DisplayName',['M = ',num2str(M_array(M_idx))]); hold on;
+        fill([d_array, fliplr(d_array)], [upper_S(:,M_idx)', fliplr(lower_S(:,M_idx)')],color_map(M_idx,:),...
+            'FaceAlpha', 0.4, 'EdgeColor', 'none', 'HandleVisibility', 'off'); hold on;
+    end
 end
 
 legend('FontSize',18, 'Location','best')

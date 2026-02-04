@@ -3,7 +3,7 @@ clear;clc;close all;
 % load('birfurcation_data_method_abm4milshtein_dk_0.1.mat')
 % phase_idx = 10;
 dk = 0.001;
-num_phases = 16;
+num_phases = 1;
 cmap = lines(num_phases);  % You can also try 'parula', 'jet', etc.
 
 sizes = 1;

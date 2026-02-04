@@ -7,21 +7,22 @@ mkdir -p log error
 
 # Define parameters
 M_values=(24)                  # Number of lasers
-num_rng_w_values=($(seq 0 1))
+num_rng_w_values=(1)
 std_w_values=(14)
+d_step_size=0.05
+max_d=1
+gamma_n=0.5
 
 # Iterate over all combinations of M, max_step, and disorder_std
 for M in "${M_values[@]}"; do
     for num_rng_w in "${num_rng_w_values[@]}"; do
           for std_w in "${std_w_values[@]}";do
                 # Generate unique log and error file names
-                log_file="./log/all2all_M_${M}_numrngw_${num_rng_w}_stdw_${std_w}.log"
-                err_file="./error/all2all_M_${M}_numrngw_${num_rng_w}_stdw_${std_w}.err"
+                log_file="./log/all2all_gamman_${gamma_n}_M_${M}_numrngw_${num_rng_w}_stdw_${std_w}.log"
+                err_file="./error/all2all_gamman_${gamma_n}_M_${M}_numrngw_${num_rng_w}_stdw_${std_w}.err"
     
                 # Run MATLAB function with parameters
-                #matlab nohup -nodisplay -r "rescale_all2all_coupling_scan('dde23', ${M}, ${num_rng_w}, ${std_w});exit" \
-                #    > "$log_file" 2> "$err_file" &
-                matlab -batch "rescale_all2all_coupling_scan('dde23', ${M}, ${num_rng_w}, ${std_w});" \
+                nohup matlab -nodisplay -nosplash -nojvm -r "rescale_all2all_coupling_scan1('dde23', ${M}, ${num_rng_w}, ${std_w},${d_step_size},${max_d},${gamma_n});exit" \
                     > "$log_file" 2> "$err_file" &
           done 
     done
