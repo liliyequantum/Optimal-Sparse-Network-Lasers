@@ -21,11 +21,11 @@ std_varphijtaui = std(abs(varphijtaui_3d), [], 3);
 % Plot mean(K_ij)
 figure(1); clf;
 imagesc(mean_optimized_K);
-title('mean($K_{ij}$)', 'Interpreter', 'latex')
+title('$\langle K_{ij}\rangle$', 'Interpreter', 'latex')
 set(gca, 'FontSize', 22, 'LineWidth', 1.2, ...
          'TickDir', 'out', 'Box', 'off');  % <- Ticks outside
-xlabel('No. Laser');
-ylabel('No. Laser');
+xlabel('Laser No.');
+ylabel('Laser No.');
 tick_positions = [1, 12, 24];
 xticks(tick_positions);
 yticks(tick_positions);
@@ -41,11 +41,11 @@ axis tight;
 % Plot std(K_ij)
 figure(2); clf;
 imagesc(std_optimized_K);
-title('std($K_{ij}$)', 'Interpreter', 'latex')
+title('$\sigma(K_{ij})$', 'Interpreter', 'latex')
 set(gca, 'FontSize', 22, 'LineWidth', 1.2, ...
          'TickDir', 'out', 'Box', 'off');  % <- Ticks outside
-xlabel('No. Laser');
-ylabel('No. Laser');
+xlabel('Laser No.');
+ylabel('Laser No.');
 xticks(tick_positions);
 yticks(tick_positions);
 xticklabels({'1', '12', '24'});
@@ -62,8 +62,8 @@ imagesc(mean_varphijtaui);
 title('mean($|\bar{\varphi}^{\tau}_{j}-\bar{\varphi}_{i}|$)', 'Interpreter', 'latex')
 set(gca, 'FontSize', 18, 'LineWidth', 1.2, ...
          'TickDir', 'out', 'Box', 'off');
-xlabel('No. Laser');
-ylabel('No. Laser');
+xlabel('Laser No.');
+ylabel('Laser No.');
 tick_positions = [1, 12, 24];
 xticks(tick_positions);
 yticks(tick_positions);
@@ -87,8 +87,8 @@ imagesc(std_varphijtaui);
 title('std($|\bar{\varphi}^{\tau}_{j}-\bar{\varphi}_{i}|$)', 'Interpreter', 'latex')
 set(gca, 'FontSize', 18, 'LineWidth', 1.2, ...
          'TickDir', 'out', 'Box', 'off');  % <- Ticks outside
-xlabel('No. Laser');
-ylabel('No. Laser');
+xlabel('Laser No.');
+ylabel('Laser No.');
 xticks(tick_positions);
 yticks(tick_positions);
 xticklabels({'1', '12', '24'});
@@ -107,26 +107,26 @@ cb.TickLabelInterpreter = 'latex';
 cb.FontSize = 16;
 exportgraphics(gcf, 'figure_without_margins.png', 'Resolution', 600);
 
-
-figure(6); clf;
-set(gcf, 'Position', [817   612   480   420]); % Set figure size to 800x600 pixels
-scatter(1:100, best_S, ...
-        60, ...                          % Marker size
-        'o', ...                         % Marker shape
-        'filled', ...                    % Fill marker
-        'MarkerEdgeColor', 'none', ...  % No edge
-        'MarkerFaceColor', red_base, ...% Fill color
-        'LineWidth', 1.2);hold on;
-plot([1, 100], [mean_best_S, mean_best_S], 'k-', 'LineWidth', 3);
-title('mean $\langle S\rangle = 0.97$','interpreter','latex')
-xlim([0 100]);
-ylim([0.94 1]);
-xticks(0:20:100);  % Clean X ticks
-yticks(0.94:0.02:1);  % Clean Y ticks
-grid on;
-set(gca,'FontSize',22,'FontName','Times New Roman');
-xlabel('No. rng')
-ylabel('$\langle S\rangle$','Interpreter','latex')
-exportgraphics(gcf, 'figure_without_margins.png', 'Resolution', 600);
-
+% 
+% figure(6); clf;
+% set(gcf, 'Position', [817   612   480   420]); % Set figure size to 800x600 pixels
+% scatter(1:100, best_S, ...
+%         60, ...                          % Marker size
+%         'o', ...                         % Marker shape
+%         'filled', ...                    % Fill marker
+%         'MarkerEdgeColor', 'none', ...  % No edge
+%         'MarkerFaceColor', red_base, ...% Fill color
+%         'LineWidth', 1.2);hold on;
+% plot([1, 100], [mean_best_S, mean_best_S], 'k-', 'LineWidth', 3);
+% title('mean $\langle S\rangle = 0.97$','interpreter','latex')
+% xlim([0 100]);
+% ylim([0.94 1]);
+% xticks(0:20:100);  % Clean X ticks
+% yticks(0.94:0.02:1);  % Clean Y ticks
+% grid on;
+% set(gca,'FontSize',22,'FontName','Times New Roman');
+% xlabel('No. rng')
+% ylabel('$\langle S\rangle$','Interpreter','latex')
+% exportgraphics(gcf, 'figure_without_margins.png', 'Resolution', 600);
+% 
 

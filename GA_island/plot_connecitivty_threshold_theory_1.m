@@ -21,7 +21,7 @@ factor = tau*sqrt(1+alpha^2)*(M-1);
 F_1 = -tau*Delta_0;
 F_24 = tau*Delta_0;
 F_12 = 20;
-kappa = 0.26;
+kappa = 0.4;
 
 % K_12 = 0.1*factor;  
 K_24 = kappa*factor;
@@ -29,8 +29,8 @@ K_24 = kappa*factor;
 phi = 0.4*pi;  % phase shift
 eta_1 = -5*pi:0.1:5*pi;  % horizontal axis
 eta_2 = -5.8*pi:0.1:6*pi;  
-eta_3 = -33*pi:0.1:5*pi;
-eta_4 = -5*pi:0.1:33*pi;
+eta_3 = -25*pi:0.1:12*pi;
+eta_4 = -12*pi:0.1:25*pi;
 
 %% critical point
 figure(1);clf;
@@ -70,7 +70,7 @@ U = eta_4.^2 - 2*K_24*cos(eta_4+phi);
 % U1 = eta_3.^2 - 2*5*K_12*cos(eta_3+phi);
 U2 = eta_3.^2 - 2*K_24*cos(eta_3+phi);
 % plot(eta_3, U1, 'LineWidth', 2,'Color',purple); hold on;  
-plot(eta_3, U2+2*45*eta_3, 'LineWidth', 2,'Color',purple); hold on;  
-plot(eta_4, U-2*45*eta_4, 'LineWidth', 2,'Color',green); hold on;
-% axis off; %
-% exportgraphics(gcf, 'figure_without_margins.png', 'Resolution', 600);
+plot(eta_3, U2+2*30*eta_3, 'LineWidth', 3,'Color',purple); hold on;  
+plot(eta_4, U-2*30*eta_4, 'LineWidth', 3,'Color',green); hold on;
+axis off; %
+exportgraphics(gcf, 'figure_without_margins.png', 'Resolution', 600);

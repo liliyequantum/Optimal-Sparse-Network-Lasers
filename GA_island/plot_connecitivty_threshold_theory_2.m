@@ -21,7 +21,8 @@ factor = tau*sqrt(1+alpha^2)*(M-1);
 F_1 = -tau*Delta_0;
 F_24 = tau*Delta_0;
 F_12 = 20;
-kappa = 0.26;
+kappa = 0.25;
+% kappa = 0.18;
 
 % K_12 = 0.1*factor;  
 K_24 = kappa*factor;
@@ -29,16 +30,19 @@ K_24 = kappa*factor;
 phi = 0.4*pi;  % phase shift
 eta_1 = -5*pi:0.1:5*pi;  % horizontal axis
 eta_2 = -5.8*pi:0.1:6*pi;  
-eta_3 = -33*pi:0.1:5*pi;
-eta_4 = -5*pi:0.1:33*pi;
+% eta_1 = -12*pi:0.1:12*pi;  % horizontal axis
+% eta_2 = -12.8*pi:0.1:13*pi; 
+% eta_3 = -33*pi:0.1:5*pi;
+% eta_4 = -5*pi:0.1:33*pi;
 
 %% critical point
 figure(1);clf;
-plot(eta_2, eta_2 - F_24, '-.','LineWidth', 3,'Color',green); hold on;        
-plot(eta_2, eta_2 - F_1, '-.','LineWidth', 3,'Color',purple); hold on;        
-plot(eta_1, -K_24*sin(eta_1 + phi), 'LineWidth', 3,'Color',orange); hold on; 
-plot([0,0],[-200,200],'k', 'LineWidth', 2); hold on;         
-plot([-6*pi,6.3*pi],[0,0],'k', 'LineWidth', 2); hold on;       
+plot(eta_2, eta_2 - F_24, '-.','LineWidth', 2,'Color',green); hold on;  
+plot(eta_2, eta_2 - F_1, '-.','LineWidth', 2,'Color',purple); hold on;        
+plot(eta_1, -K_24*sin(eta_1 + phi), 'LineWidth', 2,'Color',orange); hold on; 
+plot([0,0],[-200,200],'k', 'LineWidth', 1); hold on;         
+plot([-6*pi,6*pi],[0,0],'k', 'LineWidth', 1); hold on;  
+% plot([-13*pi,13*pi],[0,0],'k', 'LineWidth', 1); hold on; 
 
 y = 1+ K_24*cos(eta_2+phi);
 % Find positive regions
@@ -58,19 +62,4 @@ for k = 1:length(start_idx)
         orange, 'EdgeColor', 'k', 'LineStyle','--','LineWidth',1, 'FaceAlpha', 0.15);
 end
 axis off;
-% exportgraphics(gcf, 'figure_without_margins.png', 'Resolution', 600);
-
-%% potential
-figure(3);clf;
-% U_12 = eta_3.^2 - 2*F_12*eta_3 - 2*K_12*cos(eta_3+phi);
-% U_24 = eta_3.^2 - 2*F_24*eta_3 - 2*K_24*cos(eta_3+phi);
-% plot(eta_3, U_12, 'LineWidth', 2,'Color',purple); hold on;  
-% plot(eta_3, U_24, 'LineWidth', 2,'Color',green); hold on;  
-U = eta_4.^2 - 2*K_24*cos(eta_4+phi);
-% U1 = eta_3.^2 - 2*5*K_12*cos(eta_3+phi);
-U2 = eta_3.^2 - 2*K_24*cos(eta_3+phi);
-% plot(eta_3, U1, 'LineWidth', 2,'Color',purple); hold on;  
-plot(eta_3, U2+2*45*eta_3, 'LineWidth', 2,'Color',purple); hold on;  
-plot(eta_4, U-2*45*eta_4, 'LineWidth', 2,'Color',green); hold on;
-% axis off; %
 % exportgraphics(gcf, 'figure_without_margins.png', 'Resolution', 600);
