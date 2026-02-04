@@ -23,12 +23,18 @@ freq_perb_mean = reshape(mean(freq_perb, 2), M, num_sigma);
 % Create main plot
 figure; hold on;
 for sidx = [4 5 6]
-    errorbar(1:M, freq_perb_mean(:,sidx) + 30*(sidx-4), freq_perb_std(:,sidx), 'o-', ...
+    if sidx == 4
+         errorbar(1:M, freq_perb_mean(:,sidx) + 40*(sidx-4), freq_perb_std(:,sidx), 'o-', ...
+        'Color', color_map(sidx-3,:), ...
+        'LineWidth', 2, 'MarkerSize', 5, 'CapSize', 8);
+    else
+    errorbar(1:M, freq_perb_mean(:,sidx) + 40*(sidx-4), freq_perb_std(:,sidx), 'o-', ...
         'Color', color_map(sidx-3,:), ...
         'LineWidth', 2, 'MarkerSize', 6, 'CapSize', 8);
+    end
 end
 
-xlabel('No. Laser');
+xlabel('Laser No.','Interpreter','latex');
 ylabel('Relative $\Delta_i$ rad/ns', 'Interpreter', 'latex');
 grid on;
 set(gca, 'FontSize', 20);
