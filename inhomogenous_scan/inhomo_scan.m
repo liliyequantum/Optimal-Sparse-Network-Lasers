@@ -17,7 +17,7 @@ function inhomo_scan(var,kappa,num_sample)
     K_cell = cell(num_sample,1);
     for i = 1:num_sample
         all2all = kappa*(ones(M) - eye(M));
-        all2all = all2all + var*rand(M);
+        all2all = all2all + var*randn(M);
         all2all = triu(all2all,1);
         K_cell{i} = all2all + all2all';
     end
@@ -34,6 +34,6 @@ function inhomo_scan(var,kappa,num_sample)
         disp(['progress: ',num2str(i/num_sample)])
     end
     toc
-    
-    save(['./data/var_',num2str(var),'_kappa_',num2str(kappa),'_num_sample_',num2str(num_sample),'.mat'])
+    % mkdir('data_homo')
+    save(['./data_inhomo/var_',num2str(var),'_kappa_',num2str(kappa),'_num_sample_',num2str(num_sample),'.mat'])
 end
