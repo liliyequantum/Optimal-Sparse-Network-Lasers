@@ -1,6 +1,6 @@
-function freq_disorder_gen(M)
+% function freq_disorder_gen(M)
 
-% M = 24; % M Number of lasers in 1D array
+M = 400; % M Number of lasers in 1D array
 mkdir(['./M_',num2str(M)])
 if M == 1
     sorted_W = 0; % rad/ns
@@ -24,4 +24,4 @@ else
     end
 
 end
-end
+% end
