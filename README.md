@@ -15,7 +15,7 @@ If you use this code, please cite
 ```
 
 If you use this code's simulated data, please cite
-``bibtex
+```bibtex
 @dataset{ye_2026_optimal_sparse_lasers_data,
   author       = {Ye, Li-Li},
   title        = {Optimal-Sparse-Network-Lasers: v1},
