@@ -1,5 +1,6 @@
 # General
 In this repository, we share the code about work "Optimal sparse networks for synchronization of semiconductor lasers", submitted to arXiv https://arxiv.org/abs/2511.03205.
+The simulated data: https://zenodo.org/records/15597005
 
 # Citation
 If you use this code or simulated data, please cite
