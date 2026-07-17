@@ -13,3 +13,16 @@ If you use this code, please cite
   url          = {https://doi.org/10.5281/zenodo.21418320}
 }
 ```
+
+If you use this code's simulated data, please cite
+``bibtex
+@dataset{ye_2026_optimal_sparse_lasers_data,
+  author       = {Ye, Li-Li},
+  title        = {Optimal-Sparse-Network-Lasers: v1},
+  version      = {v1},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.15597005},
+  url          = {https://doi.org/10.5281/zenodo.15597005}
+}
+```
