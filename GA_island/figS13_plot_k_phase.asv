@@ -1,0 +1,98 @@
+clear;close all;
+data = load('K_phase_data.mat');
+
+M = 24;
+num_rng_w_array = 0:9;
+num_wrng = length(num_rng_w_array);
+
+K_3d = data.K_3d;
+varphijtaui_3d = data.varphijtaui_3d;
+clear data
+
+i = 2;
+figure(1); clf;
+hold on;
+set(gca, 'FontSize', 20, 'LineWidth', 1);
+xlabel('Laser No.'); ylabel('Laser No.');
+title(sprintf('$K_{ij}$ for \\texttt{rng(%d)}', i-1), 'Interpreter', 'latex');
+[row, col] = find(K_3d(:,:,i));  % find nonzero (1) entries
+scatter(col, row, 100, 'k',...
+    's', 'filled'); hold on;% 's' = square marker
+% Axes settings
+axis equal; axis tight;
+xlim([0.5, 24.5]); ylim([0.5, 24.5]);
+xticks([1,12,24]); yticks([1,12,24]);
+xticklabels({'1', '12', '24'}); yticklabels({'1', '12', '24'});
+set(gca, 'YDir', 'reverse');  % To match image matrix layout
+% title('Overlay of 10 Optimized Coupling Matrices');
+colormap([1 1 1; 0 0 0]); % White for 0, Black for 1
+c = colorbar;
+c.Ticks = [0.25, 0.75]; % Midpoints for better alignment
+c.TickLabels = {'0', '1'};
+c.Label.Interpreter = 'latex';
+exportgraphics(gcf, 'figure_1.png', 'Resolution', 600);
+
+figure(2); clf;
+hold on;
+set(gca, 'FontSize', 20, 'LineWidth', 1);
+xlabel('Laser No.'); 
+ylabel('Laser No.');
+
+% Set title with LaTeX interpreter
+title(sprintf('mean($|\\bar{\\varphi}^{\\tau}_j-\\bar{\\varphi}_i|$) for \\texttt{rng(%d)}', i-1), 'Interpreter', 'latex');
+
+% Extract and threshold phase difference matrix
+X = abs(varphijtaui_3d(:,:,i));
+imagesc(X);
+
+% Axis formatting
+axis equal; axis tight;
+xlim([0.5, 24.5]); ylim([0.5, 24.5]);
+xticks([1, 12, 24]); yticks([1, 12, 24]);
+xticklabels({'1', '12', '24'}); 
+yticklabels({'1', '12', '24'});
+set(gca, 'YDir', 'reverse');  % To match matrix-style layout
+
+% Binary colormap: white = below threshold, black = above
+% colormap([1 1 1; 0 0 0]); 
+c = colorbar;
+c.Ticks = [0, 0.1*pi, 0.2*pi];  % Position ticks between 0/1
+c.TickLabels = {'0', '$0.1\pi$', '$0.2\pi$'};
+c.Label.Interpreter = 'latex';
+c.TickLabelInterpreter = 'latex';
+
+% Export figure
+exportgraphics(gcf, 'figure_2.png', 'Resolution', 600);
+
+figure(3); clf;
+hold on;
+set(gca, 'FontSize', 20, 'LineWidth', 1);
+xlabel('Laser No.'); 
+ylabel('Laser No.');
+
+% Set title with LaTeX interpreter
+title(sprintf('std($|\\bar{\\varphi}^{\\tau}_j-\\bar{\\varphi}_i|$) for \\texttt{rng(%d)}', i-1), 'Interpreter', 'latex');
+
+% Extract and threshold phase difference matrix
+X = abs(varphijtaui_3d_std(:,:,i));
+imagesc(X);
+
+% Axis formatting
+axis equal; axis tight;
+xlim([0.5, 24.5]); ylim([0.5, 24.5]);
+xticks([1, 12, 24]); yticks([1, 12, 24]);
+xticklabels({'1', '12', '24'}); 
+yticklabels({'1', '12', '24'});
+set(gca, 'YDir', 'reverse');  % To match matrix-style layout
+
+% Binary colormap: white = below threshold, black = above
+% colormap([1 1 1; 0 0 0]); 
+c = colorbar;
+c.Ticks = [0, 0.1*pi, 0.2*pi];  % Position ticks between 0/1
+c.TickLabels = {'0', '$0.1\pi$', '$0.2\pi$'};
+c.Label.Interpreter = 'latex';
+c.TickLabelInterpreter = 'latex';
+
+% Export figure
+exportgraphics(gcf, 'figure_2.png', 'Resolution', 600);
+
