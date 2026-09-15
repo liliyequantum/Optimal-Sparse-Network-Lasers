@@ -1,5 +1,5 @@
 # General
-In this repository, we share the code about work "Optimal sparse networks for synchronization of semiconductor lasers", submitted to arXiv https://arxiv.org/abs/2511.03205.
+In this repository, we share the code about work "Selective sparsity-enhanced synchronization in disordered semiconductor laser networks", submitted to arXiv https://arxiv.org/abs/2511.03205.
 The simulated data: https://zenodo.org/records/21653378
 
 # Citation
