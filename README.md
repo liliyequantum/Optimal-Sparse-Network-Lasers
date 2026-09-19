@@ -1,6 +1,6 @@
 # General
 In this repository, we share the code about work "Selective sparsity-enhanced synchronization in disordered semiconductor laser networks", submitted to arXiv https://arxiv.org/abs/2511.03205.
-The simulated data: https://zenodo.org/records/21653378. Accepted by PNAS.
+The simulated data: https://zenodo.org/records/21653378.
 
 # Citation
 If you use this code or simulated data, please cite
